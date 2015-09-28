@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React | Comments Form</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+	<br/>
+	<br/>
+	<div class="container">
+		<div id="continer"></div>
+		<h3>mixins Example</h3>
+		<div id="example"></div>
+	</div>
+
+	<script type="text/jsx">
+	
+	var SetIntervalMixin = {
+	  componentWillMount: function() {
+	    this.intervals = [];
+	    console.log("Mixin : Component Will Mount");
+	  },
+	  setInterval: function() {
+	    this.intervals.push(setInterval.apply(null, arguments));
+	    console.log('Mixin : Set Interval');
+	  },
+	  componentWillUnmount: function() {
+	    this.intervals.map(clearInterval);
+	    console.log('Component Will Unmount');
+	  }
+	};
+
+	var TickTock = React.createClass({
+	  mixins: [SetIntervalMixin], // Use the mixin
+	  getInitialState: function() {
+	  	console.log("Get Initial State");
+	    return {seconds: 0};
+	    
+	  },	
+	  componentDidMount: function() {
+	    console.log('Component Did Mount');
+	    this.setInterval(this.tick, 1000); // Call a method on the mixin
+	  },
+	  tick: function() {
+	    this.setState({seconds: this.state.seconds + 1});
+	    console.log("Tick");
+	  },
+	  render: function() {
+	  	console.log('Render');
+	    return (
+	      <p>
+	        React has been running for {this.state.seconds} seconds.
+	      </p>
+	    );
+	  }
+	});
+
+	React.render(<TickTock />,document.getElementById('example') );
+	
+	</script>
+
+</body>
+</html>
+

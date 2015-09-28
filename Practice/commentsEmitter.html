@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/EventEmitter.js"></script>
+</head>
+<body>
+	<h3>Please enter your commens here </h3>
+	<div id="example"></div>
+	<button id="trigger--button" value="Buttom Here" />
+
+
+<script type="text/jsx">
+	
+	$(function () {
+    var globalEmitter = new EventEmitter();
+
+    var triggerEmitter = function (payload) {
+        console.log("Event payload", payload);
+        globalEmitter.emit('change', payload);
+    };
+
+    var makeChangeEventMixin = function (emitter) {
+        return {
+            componentDidMount: function () {
+                emitter.addListener('change', this.__makeChangeEventMixin_handler_);
+            },
+            componentWillUnmount: function () {
+                emitter.removeListener('change', this.__makeChangeEventMixin_handler_);
+            },
+            __makeChangeEventMixin_handler_: function (payload) {
+                console.log('__makeChangeEventMixin_handler_ fired with payload=%O', payload);
+                this.replaceState(payload);
+            }
+        };
+    };
+
+    var UIComponent = React.createClass({
+        mixins: [makeChangeEventMixin(globalEmitter)],
+        getInitialState: function () {
+            return {
+                data: {
+                    name: ''
+                }
+            };
+        },
+        render: function () {
+            var data = this.state.data;
+
+            console.log('Data: %O', data);
+            return React.DOM.div(null,
+            React.DOM.span(null, "Hi there '" + data.name + "'"))
+        }
+    });
+
+    React.render( React.createElement(UIComponent), document.getElementById('example'));
+
+    $('#trigger--button').on('click', function (e) {
+        e.preventDefault();
+        triggerEmitter({
+            data: {
+                name: "Mike"
+            }
+        })
+    });
+});
+
+</script>
+
+</body>
+</html>

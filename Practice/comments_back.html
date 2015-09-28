@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+	<h3>Please enter your comments here </h3>
+	<div id="content"></div>
+
+
+<script type="text/jsx">
+
+	var data = [
+	  {author: "Manasa", text: "This is one comment"},
+	  {author: "Jordan Walke", text: "This is *another* comment"},
+	  {author: "Jordan", text: "This is comment"},
+	  {author: "Walke", text: "This is New comment"},
+	  {author: "Naveen", text: "This is Updated comment"},
+	  {author: "Kumar", text: "This is Updated comment"},
+	  {author: "Nirmal", text: "This is Updated comment"},
+	  {author: "Naveen", text: "This is Updated comment"}
+	];
+
+
+	React.render(<CommentBox />,document.getElementById('content') );
+
+</script>
+
+</body>
+</html>

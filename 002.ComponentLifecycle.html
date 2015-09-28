@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+
+<div class="container">
+		<h3>React Component Lifecycle</h3>
+		<h4>1) Mounting</h4>
+			<ul>
+				<li>getInitialState: function() {} // its kind of default value setting</li>
+				<li>componentWillMount: function() {} // before component is mounted</li>
+				<li>componentDidMount: function() {} // after component is mounted </li>
+			</ul>
+		<h4>2) Updating</h4>
+			<ul>
+				<li>componentWillReceiveProps: function(nextProps) {},</li>
+				<li>shouldComponentUpdate: function(nextProps, nextState) {},</li>
+				<li>componentWillUpdate: function(nextProps, nextState) {},</li>
+				<li>componentDidUpdate: function(prevProps, prevState) {},</li>		
+			</ul>
+		<h4>3) Unmounting</h4>
+			<ul>
+				<li>componentWillUnmount: function() {},</li>
+			</ul>
+		<hr/>
+		<h4>OnLoad Flow</h4>
+		<p class="gap">getInitialState > componentWillMount > render > componentDidMount</p>
+
+		<h4>OnState Change</h4>
+		<p class="gap">shouldComponentUpdate > render > componentDidUpdate</p>
+		<div id="content"></div>
+</div>
+
+<script type="text/jsx">
+
+	var SetIntervalMixin = {
+	  componentWillMount: function() {
+	    this.intervals = [];
+	  },
+	  setInterval: function() {
+	    this.intervals.push(setInterval.apply(null, arguments));
+	  },
+	  componentWillUnmount: function() {
+	    this.intervals.map(clearInterval);
+	  }
+	};
+
+	var ReactComponent = React.createClass({
+		propTypes: {
+			optionalArray: React.PropTypes.string
+		},
+		mixins: [SetIntervalMixin],
+		//MountCycle
+		getInitialState: function() {
+			console.log("Get Initial State");
+			return {
+				data:true 
+			};
+		},
+		//MountCycle
+		componentWillMount: function() {
+			console.log("Component will mount");
+		},
+		//MountCycle
+		componentDidMount: function() {
+			console.log('Component Did Mount');
+			console.log('==========================');
+		},
+
+
+
+		//Update Cycle
+		componentWillReceiveProps: function(nextProps) {
+			console.log('Component will receive Props');
+		},
+		//Update Cycle
+		shouldComponentUpdate: function(nextProps, nextState) {
+			console.log('State has been changed\nShould Component Update');
+			return true;
+		},
+		//Update Cycle
+		componentWillMount: function() {
+			console.log('Component Will Mount');
+		},
+		//Update Cycle
+		componentDidUpdate: function(prevProps, prevState) {
+			console.log('Component Did Update');
+		},
+
+
+		//UnMounting Cycle
+		componentWillMount: function() {
+			console.log('Component Will Mount');
+		},
+
+		//Custom Function
+		customClickFUnction:function(){
+			console.log("Custom Function To Change State \n==========================");
+			this.setState({
+				data: !this.state.data 
+			});
+		},
+		// Render Method
+		render: function() {
+			console.log("Inside Render");
+			return (<button onClick={this.customClickFUnction}>Click Here...!</button>);
+		}
+	});
+
+	React.render(<ReactComponent />,document.getElementById('content') );
+
+</script>
+
+
+</body>
+</html>
+

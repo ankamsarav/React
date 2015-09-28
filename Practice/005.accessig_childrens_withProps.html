@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		var HelloWorld = React.createClass({
+
+			render:function(){
+				return (
+					<div>
+						<h1>Hello , {this.props.name}!</h1>
+						<p>{this.props.children}</p>
+					</div>
+					);
+			}
+
+		});
+		React.render( <HelloWorld name ="React Naveen"><input type="text"/></HelloWorld>, document.body);
+		// cannot do that
+	</script>
+
+</body>
+</html>

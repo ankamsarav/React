@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		var CustomCheckBox = React.createClass({
+			getInitialState: function(){
+				return {checked:true}
+			},
+			handleCheck:function(){
+				this.setState({checked: !this.state.checked});
+			},
+			render:function(){
+				var msg;
+				if(this.state.checked){
+					msg="checked";
+				}else{
+					msg= "unchecked";
+				}
+				return (
+					<div>
+						<input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+						<span> - Checkbox is {msg}.</span>
+					</div>
+					);
+			}
+
+		});
+		React.render( <CustomCheckBox/>, document.body);
+	</script>
+
+</body>
+</html>

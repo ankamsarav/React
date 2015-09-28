@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+			/***
+			*	
+			***/
+			var Helloworld = React.createClass({displayName: "Helloworld",
+
+				render:function(){
+					return (
+							React.createElement("div", null, 
+								React.createElement("h1", null, "Hello  World"), 
+								React.createElement("p", null, "This is second line")
+							)
+						);
+				}
+			});
+
+			React.render(React.createElement(Helloworld, null),document.body);
+			
+	</script>
+
+</body>
+</html>

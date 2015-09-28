@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		var HelloWorld = React.createClass({
+
+			render:function(){
+				return (
+					<div>
+						<h1>Hello {this.props.name}</h1>
+						<p className={this.props.name}>{this.props.children}</p>
+					</div>
+					);
+			}
+
+		});
+		React.render( 
+			<div>
+				<HelloWorld name ="Naveen">How are u doing </HelloWorld>
+				<HelloWorld name ="kumar">How are u doing </HelloWorld>
+				<HelloWorld name ="Praveen">How are u doing </HelloWorld>
+				<HelloWorld name ="Raju">How are u doing </HelloWorld>
+				<HelloWorld name ="Mr. x">How are u doing </HelloWorld>
+			</div>
+			, document.body);
+
+	</script>
+
+</body>
+</html>

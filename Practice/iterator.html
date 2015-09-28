@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		
+		var users =['Naveen','Kumar','Pawan','Alex','Tim'];
+		
+		// described as child compoent 
+		var User = React.createClass({
+			render: function() {
+				return (
+					<li>{this.props.user}</li>
+				);
+			}
+		});
+
+		// described as Owner component
+		var Users = React.createClass({
+			render: function() {
+				var userTemplate = this.props.users.map(function(user,index){
+					// calling child compoent to return HTML
+					return <User key={index} user={user} />
+				});
+				return (
+					<ul>
+						{userTemplate}
+					</ul>
+				);
+			}
+		});
+
+		//Asking react to render Owner component alone 
+		React.render(<Users users={users} />, document.body);
+
+		// So that means all users will be printed on the page
+		// what if users.push("new") will the view updates "no".
+		// need to rerender the logic again so that it will be udpated 
+
+	</script>
+</body>
+</html>

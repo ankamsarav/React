@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		var HelloWorld = React.createClass({
+
+			render:function(){
+				return (<h1>Hello {this.props.name}</h1>);
+			}
+
+		});
+		React.render(<HelloWorld name ="Naveen" />, document.body);
+	</script>
+
+</body>
+</html>

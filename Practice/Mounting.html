@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<p id="header"></p>
+
+	<script type="text/jsx">
+	
+		var Detenator = React.createClass({
+			getInitialState: function() {
+				return {
+					value:"true"
+				};
+			},
+			componentDidMount: function() {
+				console.log('Componet did mount ');
+				console.log('STATE VALUE' + this.state.value);
+			},
+			componentWillMount: function() {
+				console.log("Component will mount");
+				console.log('STATE VALUE' + this.state.value);
+			},
+			render: function() {
+				return (
+					<div>Time Remaining : {this.state.value} </div>
+				);
+			}
+		});
+		React.render(<Detenator/>, document.getElementById('header'));
+	
+		
+	</script>
+
+</body>
+</html>

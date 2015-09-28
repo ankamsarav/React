@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ReactJS | Intro</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+<h1>what is react.?</h1>
+<ul>
+    <li>React is inroduced to create user interfaces, Using JavaScript</li>
+    <li>Build and Maintained by FACEBOOK</li>
+    <li>just V in M"V"C - just takes cares about view alone</li>
+    <li>its useful when we are building the UI interfaces with frequent change in the serialize(JSON - serialize) Data</li>
+    <li> - when eveer data changes the component will update automatically </li>
+    <li> - it wil fit into any existing libraries like backbone, Ember, Angular</li>
+</ul>
+
+	<div id="container"></div>
+<script type="text/jsx">
+	var ReactComponent = React.createClass({
+		render: function() {
+			return <p>This is my first Component</p>;
+		}
+	});
+	React.render(<ReactComponent/>,document.getElementById('container'));
+</script>
+
+
+
+</body>
+</html>

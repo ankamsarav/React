@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Radio Buttons Example</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.css">
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<div class="container" id="container"></div>
+	
+	<script type="text/jsx">
+
+		var RadioCoulmn = React.createClass({
+			render: function() {
+				return (
+					<p className="radio">
+						<label>
+							<input type="radio" name="referer" value={this.props.value}/>
+							<span>{this.props.text}</span>
+						</label>
+					</p>
+				);
+			}
+		});
+		
+		
+		var RadioOtehresCoulmn = React.createClass({
+			getInitialState: function() {
+				return {
+					selected: false 
+				};
+			},
+			RadioClick: function(event){
+				var OthersBtn = event.target;
+
+				this.setState({
+					selected: OthersBtn.checked 
+				});
+
+			},
+			render: function() {
+				return (
+					<p className="radio">
+						<label>
+							<input type="radio" name="referer" onClick={this.RadioClick} value={this.props.value}/>
+							<span>{this.props.text}</span>
+						</label>
+						
+						{this.state.selected &&
+							<label>
+								<span>Please enter</span>
+								<input type="text"/>
+							</label>
+						}
+						
+					</p>
+				);
+			}
+		
+		});
+		
+		
+
+		var RadioButtons= React.createClass({
+			render: function() {
+				return (
+					<div>
+						<h1>ReactJs Radio Group Demo</h1>
+						<p>Have you seent the react Component</p>
+
+						<RadioCoulmn value="newspaper" text="News Paper"/>
+						<RadioCoulmn value="socail" text="Socail"/>
+						<RadioCoulmn value="facebook" text="Facebook"/>
+						<RadioCoulmn value="twitter" text="Twitter"/>
+						<RadioCoulmn value="friend" text="Friend"/>
+						<RadioOtehresCoulmn value="otheres" text="Others"/>
+
+
+
+						<input type="submit" value="Submit"/>
+					</div>
+				);
+			}
+		});
+
+		React.render(<RadioButtons/>,document.getElementById('container'));
+	</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

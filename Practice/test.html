@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<p id="header"></p>
+
+	<script type="text/jsx">
+
+		var HeaderComponent = React.createClass({
+
+			render:function(){
+				return (<h1>Hello I am {this.props.name} and I like {this.props.bike} Bikes</h1>);
+			}
+
+		}); 
+
+		React.render(<HeaderComponent name ="Sagar" bike="Indian"></HeaderComponent> ,document.getElementById('header'));
+	</script>
+
+</body>
+</html>

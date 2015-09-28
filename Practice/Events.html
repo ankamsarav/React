@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<script type="text/jsx">
+		var Likes = React.createClass({
+		
+			render: function() {
+				return (
+						<Like animals={Animals} />
+				);
+			}
+		
+		});
+
+		var Animals = ['DOGS','DOVE','SNAKE'];
+		
+		var Like = React.createClass({
+			getInitialState: function() {
+				return {
+					likes:0
+				};
+			},
+			render: function() {
+				var template = this.props.animals.map(function(animal){
+					return <div><h1>{animal}</h1> <p>Likes : {this.state.likes}</p></div>;
+				});
+				return (
+					<div>
+						{template}
+					</div>
+				);
+			}
+		
+		});
+		
+		React.render(<Likes animals={Animals}/>, document.body);
+		
+	</script>
+
+</body>
+</html>

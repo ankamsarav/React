@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+
+	<!-- Jquery -->
+	<script type="text/javascript" src="../js/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap css-->
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<!-- React -->
+	<script type="text/javascript" src="../js/react.js"></script>
+	<script type="text/javascript" src="../js/JSXTransformer.js"></script>
+	<!-- <script type="text/jsx" src="../js/src/notefull.js"></script> -->
+
+	<script type="text/jsx">
+
+		var Note = React.createClass({
+			getInitialState:function(){
+				return {editable : false};
+			},
+			edit:function(){
+				this.setState({editable :true});
+			},
+			save:function(){
+
+				var areaValue = this.refs.textValue.getDOMNode().value;
+				this.props.children = areaValue;
+				this.setState({editable :false});
+			},
+			normalDisplay:function(){
+
+				return(
+					<div className ="note">
+						<p>{this.props.children}</p>
+						<button
+							onClick={this.edit} 
+							className="btn btn-primary glyphicon glyphicon-pencil"></button>
+					</div>
+					);
+
+			},
+			editableDisplay:function(){
+				return(
+						<div className="note">
+							<textarea ref="textValue" defaultValue={this.props.children} className="form-control"></textarea>
+							<button 
+								onClick={this.save}
+								className="btn btn-success glyphicon glyphicon-floppy-disk"></button>
+						</div>
+					);
+			},
+			render:function(){
+				if(this.state.editable){
+					return this.editableDisplay();
+				}else{
+					return this.normalDisplay();
+				}
+				
+			}
+		});
+
+		var Board = React.createClass({
+			propTypes:{
+				count:function(props, propName){
+					console.log();
+					if(typeof(props[propName]) !== "number"){
+						return new Error ("the count property must be a number");
+					}
+					if(props[propName] >100){
+						return new Error("Creating"+ props[propName]+ "notes is radiculous" )
+					}
+
+				}
+			},
+			getInitialState:function(){
+				return {
+					notes:[
+						"Call Bill",
+						"Email lisa",
+						"Email bill",
+						"semd Proposal"
+					]
+				};
+			},
+			render:function(){
+				return (<div className="board">
+							{this.state.notes.map(function(note,i){
+								return(
+										<Note>{note}</Note>
+									);
+							})}
+						</div>);
+			}
+			
+
+
+		});
+
+		React.render(<Board count={10} />, document.getElementById("react-container"));
+
+	</script>
+
+
+
+</head>
+<body>
+
+<div id="react-container"></div>
+		
+</body>
+</html>

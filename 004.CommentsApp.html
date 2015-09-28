@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React | Comments Form</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+	<br/>
+	<br/>
+	<div class="container">
+		<div id="continer"></div>
+		<h3>Please enter your Comments Here</h3>
+		<hr />
+		<div id="commentForm"></div>
+	</div>
+
+	<script type="text/jsx">
+	
+	var data = [
+	  {author: "Naveen", text: "This is one comment"},
+	  {author: "Jordan Walke", text: "This is *another* comment"},
+	  {author: "Jordan", text: "This is comment"}
+	];
+
+	var CommentsView = React.createClass({	
+		render: function() {
+			console.log("Rendering");
+			console.log("this.props.data : " + this.props.data.length);
+
+			var Template = this.props.data.map(function(data,index){
+				return(<div key={index}>
+							<span>Name : {data.author}</span>
+							<br/>
+							<span>Description : {data.text}</span>
+							<hr />
+						</div>
+					);
+			});
+			return (<div>{Template}</div>);
+		}
+	});
+
+
+
+	var CommentsForm = React.createClass({
+		getDefaultProps: function() {
+			return {
+				updated: false
+			};
+		},
+		UpdateNew: function(){
+			var name = React.findDOMNode(this.refs.name).value;
+			var desc = React.findDOMNode(this.refs.Desc).value;
+			if((!name) || (!desc)){
+				return;
+			}
+			this.props.data.push({author: name, text: desc});
+
+			this.setState({
+				updated: true
+			});
+
+		},
+		render: function() {
+			return (
+				<div>
+					<CommentsView data={this.props.data}></CommentsView>
+					<div>
+						<input type="text" ref="name" /> &nbsp;&nbsp;
+						<input type="text" ref="Desc" />&nbsp;&nbsp;
+						<button onClick={this.UpdateNew}>Update</button>
+					</div>
+				</div>
+				
+			);
+		}
+	});
+
+	React.render( <CommentsForm data={data} />, document.getElementById('commentForm'));
+	
+	</script>
+
+</body>
+</html>
+

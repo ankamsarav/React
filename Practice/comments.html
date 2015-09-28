@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+</head>
+<body>
+	<h3>Please enter your commens here </h3>
+	<div id="commentsPanel"></div>
+
+
+<script type="text/jsx">
+	var CommentsApp = React.createClass({
+		getInitialState: function() {
+			return {
+				data:[] 
+			};
+		},
+		UpdateData: function(){
+			var name = React.findDOMNode(this.refs.namesrc).value.trim();
+			var desc = React.findDOMNode(this.refs.descsrc).value.trim();
+			if((!name) && (!desc)){
+				return;
+			}
+			console.log(name + " : " + desc);
+			this.state.data.push({name:name, desc:desc});
+			console.log(this.state.data);
+			
+			this.setState({
+				data: this.state.data
+			});
+		},
+		render: function() {
+			var Template = this.state.data.map(function(){
+					return (<div>
+								<span>Name : </span>
+								<span>{data.name}</span>
+								<span> !!!! </span>
+								<span>Description : </span>
+								<span>{data.desc}</span>
+							</div>);
+				});
+
+			return (
+				<div>
+					{Template}
+					<div>
+						<p><input ref="namesrc" type="text" /></p>
+						<p><input ref="descsrc" type="text" /></p>
+						<p><input type="button" onClick={this.UpdateData} value="Click here ..!" /></p>
+					</div>
+				</div>
+			);
+		}
+	});
+	
+ 	React.render(<CommentsApp />, document.getElementById('commentsPanel'));
+
+</script>
+
+</body>
+</html>

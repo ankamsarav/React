@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React | Like BUTTON</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+	
+	<div class="container" id="continer"></div>
+
+	<script type="text/jsx">
+
+		var data = [
+					{
+						imageURL: 'https://facebook.github.io/react/img/logo_og.png',
+					 	heading:'You have got mail',
+					 	description:'this id description for the thumbs component',
+					 	btnlabel : 'Inbox',
+					 	btnnum : 20,
+
+					},{
+						imageURL: 'https://facebook.github.io/react/img/logo_og.png',
+					 	heading:'Our Tutorials',
+					 	description:'this id description for the thumbs component',
+					 	btnlabel : 'See Tutorials',
+					 	btnnum : 30,
+
+					},{
+						imageURL: 'https://facebook.github.io/react/img/logo_og.png',
+					 	heading:'Likes',
+					 	description:'this id description for the likes button container component',
+					 	btnlabel : 'Like',
+					 	btnnum : 990,
+
+					}
+				];
+		
+		var Badge = React.createClass({
+			getInitialState: function() {
+				return {
+					count:this.props.btnnum 
+				};
+			},
+			clicked: function(){
+				var NewCount = this.props.btnnum+1;
+				this.setState({
+					count: 22
+				});
+			},
+			render: function() {
+				return (
+					<button type="button" className='btn btn-primary' onClick={this.clicked}>
+						<span>{this.props.btnlabel} </span>
+						<span className='badge'>{this.props.btnnum}</span>
+					</button>
+				);
+			}
+		});
+		
+		var ThumbNails = React.createClass({
+			render: function() {
+				return (
+					<div className="col-sm-6 col-md-4">
+					    <div className="thumbnail">
+					      <img width='252' src={this.props.imageURL}/>
+					      <div className="caption">
+					        <h3>{this.props.heading}</h3>
+					        <p>{this.props.description}</p>
+					        <p>
+					        	<Badge btnlabel={this.props.btnlabel} btnnum={this.props.btnnum} />
+					        </p>
+					      </div>
+					    </div>
+					  </div>
+				);
+			}
+		});
+		
+		var ThumnailsComponent = React.createClass({
+			render: function() {
+				var Template = this.props.data.map(function(ins,index){
+					return <ThumbNails key={index} btnlabel={ins.btnlabel} btnnum={ins.btnnum}  imageURL={ins.imageURL} heading={ins.heading} description={ins.description} />
+				});
+				return (
+					<div className="row">
+					 	{Template}
+					</div>
+				);
+			}
+		});
+		
+		React.render(<ThumnailsComponent data={data} />,document.getElementById('continer'));
+
+	</script>
+
+</body>
+</html>
+

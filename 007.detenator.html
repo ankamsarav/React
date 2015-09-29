@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+</head>
+<body>
+
+	<p id="header"></p>
+
+	<script type="text/jsx">
+	
+		var Detenator = React.createClass({
+			//document.ready kind of method loads when ever component is initialized 
+			componentDidMount: function() {
+				this.interval = setInterval(this.ticker,1000);
+			},
+			ticker: function(){
+				var timeRemaining = this.state.totalTime-1;
+				if(timeRemaining == 0){
+					this.setState({
+						totalTime: "Boom..!" 
+					});
+					clearInterval(this.interval);
+				}else{
+					this.setState({
+						totalTime: timeRemaining 
+					});
+				}
+				
+			},
+			// built in Event to set the state / Initial value to the component
+			getInitialState: function() {
+				return {
+					totalTime :10
+				};
+			},
+			render: function() {
+				return (
+					<div>Time Remaining : {this.state.totalTime} </div>
+				);
+			}
+		});
+		React.render(<Detenator/>, document.getElementById('header'));
+	
+		
+	</script>
+
+</body>
+</html>

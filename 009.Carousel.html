@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+
+	<div class="container" id="container">
+
+		
+	</div>
+
+	<script type="text/jsx">
+
+	var carousel = {
+			items: [
+				{
+					img: "assets/img/carousel-1.jpg",
+					caption: "Carousel title 1"
+				},
+				{
+					img: "assets/img/carousel-2.jpg",
+					caption: "Carousel title 2"
+				},
+				{
+					img: "assets/img/carousel-3.jpg",
+					caption: "Carousel title 3"
+				},
+				{
+					img: "assets/img/carousel-4.jpg",
+					caption: "Carousel title 4"
+				},
+				{
+					img: "assets/img/carousel-5.jpg",
+					caption: "Carousel title 5"
+				},
+			]
+		};
+
+		var Indicators = React.createClass({
+			render: function() {
+
+				var userTemplate = this.props.data.items.map(function(data, index){
+					return  <li key={index} data-target="#carousel-example-generic" Onclick={this.clicked} className="active"></li>;
+				});
+				
+				return (
+					<ol className="carousel-indicators">
+					    {userTemplate}
+					</ol>
+				);
+			}
+		
+		});
+		
+		var SliderImages = React.createClass({
+			render: function() {
+				var userTemplate = this.props.data.items.map(function(data, index){
+					return  <div key={index} className="item active">
+								<img src={data.img} alt="Image1" /> 
+								<div className="carousel-caption"> {data.caption} </div> 
+							</div>;
+				});
+				return (<div className="carousel-inner" role="listbox">
+							{userTemplate}
+						</div>);
+			}
+		});
+	
+	var CarouselComponent = React.createClass({
+		getInitialState: function() {
+			return {
+				active:0 
+			};
+		},
+		render: function() {
+			return (
+				<div id="carousel-example-generic" className="carousel slide" data-ride="carousel">
+
+				  <Indicators activeside={this.state.active} data={this.props.data}/>
+				  <SliderImages data={this.props.data}/>
+				 
+				  <a className="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				    <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				    <span className="sr-only">Previous</span>
+				  </a>
+
+				  <a className="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				    <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				    <span className="sr-only">Next</span>
+				  </a>
+				    
+				</div>
+			);
+		}
+	
+	});
+	
+	React.render(<CarouselComponent data={carousel} />, document.getElementById('container'));
+
+	</script>
+
+</body>
+</html>

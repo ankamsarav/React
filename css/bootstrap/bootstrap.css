@@ -6801,10 +6801,14 @@ p label span{
   font-weight: normal;
 }
 #carousel-example-generic{
-  height: 500px;
+  height: 379px;
   width: 900px;
   margin: 0px auto;
   overflow: hidden;
+
+}
+#carousel-example-generic .item img{
+  width:100%;
 
 }
 /*# sourceMappingURL=bootstrap.css.map */

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost/React/comments.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>React POC</title>
+	<script type="text/javascript" src="./React POC_files/react.js"></script>
+	<script type="text/javascript" src="./React POC_files/JSXTransformer.js"></script>
+	<script type="text/javascript" src="./React POC_files/jquery.min.js"></script>
+<script>
+	var CommentsApp = React.createClass({displayName: "CommentsApp",
+		render: function() {
+			return (
+				React.createElement("div", null, 
+					React.createElement("div", null, 
+						React.createElement("span", null, "Name : "), 
+						React.createElement("span", null, "Naveen"), 
+						React.createElement("span", null, " !!!! "), 
+						React.createElement("span", null, "Description : "), 
+						React.createElement("span", null, "This is description")
+					), 
+
+					React.createElement("div", null, 
+						React.createElement("p", null, React.createElement("input", {type: "text"})), 
+						React.createElement("p", null, React.createElement("input", {type: "text"})), 
+						React.createElement("p", null, React.createElement("input", {type: "button", value: "Click here ..!"}))
+					)
+				)
+			);
+		}
+	});
+	
+ 	React.render(React.createElement(CommentsApp, null), document.getElementById('commentsPanel'));
+
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHJhbnNmb3JtZWQuanMiLCJzb3VyY2VzIjpbIklubGluZSBKU1ggc2NyaXB0Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsSUFBSSxpQ0FBaUMsMkJBQUE7RUFDcEMsTUFBTSxFQUFFLFdBQVc7R0FDbEI7SUFDQyxvQkFBQSxLQUFJLEVBQUEsSUFBQyxFQUFBO0tBQ0osb0JBQUEsS0FBSSxFQUFBLElBQUMsRUFBQTtNQUNKLG9CQUFBLE1BQUssRUFBQSxJQUFDLEVBQUEsU0FBYyxDQUFBLEVBQUE7TUFDcEIsb0JBQUEsTUFBSyxFQUFBLElBQUMsRUFBQSxRQUFhLENBQUEsRUFBQTtNQUNuQixvQkFBQSxNQUFLLEVBQUEsSUFBQyxFQUFBLFFBQWEsQ0FBQSxFQUFBO01BQ25CLG9CQUFBLE1BQUssRUFBQSxJQUFDLEVBQUEsZ0JBQXFCLENBQUEsRUFBQTtNQUMzQixvQkFBQSxNQUFLLEVBQUEsSUFBQyxFQUFBLHFCQUEwQixDQUFBO0FBQ3RDLEtBQVcsQ0FBQSxFQUFBOztLQUVOLG9CQUFBLEtBQUksRUFBQSxJQUFDLEVBQUE7TUFDSixvQkFBQSxHQUFFLEVBQUEsSUFBQyxFQUFBLG9CQUFBLE9BQU0sRUFBQSxDQUFBLENBQUMsSUFBQSxFQUFJLENBQUMsTUFBTSxDQUFBLENBQUcsQ0FBSSxDQUFBLEVBQUE7TUFDNUIsb0JBQUEsR0FBRSxFQUFBLElBQUMsRUFBQSxvQkFBQSxPQUFNLEVBQUEsQ0FBQSxDQUFDLElBQUEsRUFBSSxDQUFDLE1BQU0sQ0FBQSxDQUFHLENBQUksQ0FBQSxFQUFBO01BQzVCLG9CQUFBLEdBQUUsRUFBQSxJQUFDLEVBQUEsb0JBQUEsT0FBTSxFQUFBLENBQUEsQ0FBQyxJQUFBLEVBQUksQ0FBQyxRQUFBLEVBQVEsQ0FBQyxLQUFBLEVBQUssQ0FBQyxnQkFBZ0IsQ0FBQSxDQUFHLENBQUksQ0FBQTtLQUNoRCxDQUFBO0lBQ0QsQ0FBQTtLQUNMO0dBQ0Y7QUFDSCxFQUFFLENBQUMsQ0FBQzs7QUFFSixFQUFFLEtBQUssQ0FBQyxNQUFNLENBQUMsb0JBQUMsV0FBVyxFQUFBLElBQUEsQ0FBRyxDQUFBLEVBQUUsUUFBUSxDQUFDLGNBQWMsQ0FBQyxlQUFlLENBQUMsQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiXG5cdHZhciBDb21tZW50c0FwcCA9IFJlYWN0LmNyZWF0ZUNsYXNzKHtcblx0XHRyZW5kZXI6IGZ1bmN0aW9uKCkge1xuXHRcdFx0cmV0dXJuIChcblx0XHRcdFx0PGRpdj5cblx0XHRcdFx0XHQ8ZGl2PlxuXHRcdFx0XHRcdFx0PHNwYW4+TmFtZSA6IDwvc3Bhbj5cblx0XHRcdFx0XHRcdDxzcGFuPk5hdmVlbjwvc3Bhbj5cblx0XHRcdFx0XHRcdDxzcGFuPiAhISEhIDwvc3Bhbj5cblx0XHRcdFx0XHRcdDxzcGFuPkRlc2NyaXB0aW9uIDogPC9zcGFuPlxuXHRcdFx0XHRcdFx0PHNwYW4+VGhpcyBpcyBkZXNjcmlwdGlvbjwvc3Bhbj5cblx0XHRcdFx0XHQ8L2Rpdj5cblxuXHRcdFx0XHRcdDxkaXY+XG5cdFx0XHRcdFx0XHQ8cD48aW5wdXQgdHlwZT1cInRleHRcIiAvPjwvcD5cblx0XHRcdFx0XHRcdDxwPjxpbnB1dCB0eXBlPVwidGV4dFwiIC8+PC9wPlxuXHRcdFx0XHRcdFx0PHA+PGlucHV0IHR5cGU9XCJidXR0b25cIiB2YWx1ZT1cIkNsaWNrIGhlcmUgLi4hXCIgLz48L3A+XG5cdFx0XHRcdFx0PC9kaXY+XG5cdFx0XHRcdDwvZGl2PlxuXHRcdFx0KTtcblx0XHR9XG5cdH0pO1xuXHRcbiBcdFJlYWN0LnJlbmRlcig8Q29tbWVudHNBcHAgLz4sIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdjb21tZW50c1BhbmVsJykpO1xuXG4iXX0=</script></head>
+<body>
+	<h3>Please enter your commens here </h3>
+	<div id="commentsPanel"><div data-reactid=".0"><div data-reactid=".0.0"><span data-reactid=".0.0.0">Name : </span><span data-reactid=".0.0.1">Naveen</span><span data-reactid=".0.0.2"> !!!! </span><span data-reactid=".0.0.3">Description : </span><span data-reactid=".0.0.4">This is description</span></div><div data-reactid=".0.1"><p data-reactid=".0.1.0"><input type="text" data-reactid=".0.1.0.0"></p><p data-reactid=".0.1.1"><input type="text" data-reactid=".0.1.1.0"></p><p data-reactid=".0.1.2"><input type="button" value="Click here ..!" data-reactid=".0.1.2.0"></p></div></div></div>
+
+
+<script type="text/jsx">
+	var CommentsApp = React.createClass({
+		render: function() {
+			return (
+				<div>
+					<div>
+						<span>Name : </span>
+						<span>Naveen</span>
+						<span> !!!! </span>
+						<span>Description : </span>
+						<span>This is description</span>
+					</div>
+
+					<div>
+						<p><input type="text" /></p>
+						<p><input type="text" /></p>
+						<p><input type="button" value="Click here ..!" /></p>
+					</div>
+				</div>
+			);
+		}
+	});
+	
+ 	React.render(<CommentsApp />, document.getElementById('commentsPanel'));
+
+</script>
+
+
+</body></html>

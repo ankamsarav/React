@@ -1,0 +1,26 @@
+{
+  "name": "lynda",
+  "version": "1.0.0",
+  "description": "Complete Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Reactjs",
+    "flex"
+  ],
+  "author": "Naveen Kumar PG",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-react": "^3.0.1",
+    "gulp-util": "^3.0.6",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.4.0"
+  }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React POC</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+
+	<div class="container" id="container"></div>
+	<script type="text/jsx">
+	var React = require('react');
+	
+	var StoreKeeper = React.createClass({
+		render: function() {
+			return (
+				<div><div />
+			);
+		}
+	});
+
+
+	React.render(<StoreKeeper />, document.getElementById('container'));
+
+	</script>
+
+</body>
+</html>

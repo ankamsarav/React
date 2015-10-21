@@ -4,4 +4,4 @@ build
 .DS_Store
 .sass-cache
 *.map
-examples/flux_example/simpleProject/node_modules
+examples/StoreKeeper/node_modules

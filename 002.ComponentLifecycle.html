@@ -81,6 +81,11 @@
 		//Update Cycle
 		shouldComponentUpdate: function(nextProps, nextState) {
 			console.log('State has been changed\nShould Component Update');
+			/**
+			 * return decides weather to render the component ot Not 
+			 * if true goes to the render
+			 * if false skips render
+			 */
 			return true;
 		},
 		//Update Cycle

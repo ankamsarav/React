@@ -25,13 +25,15 @@
 					count: this.state.count+1 
 				});
 			},
+			// you can add style like this to the react elements
 			render: function() {
 				return (
 					<div>
-						<span>Click Here To Like : </span>
+						
+						<span style={{color:'green'}}>Click Here To Like : </span>
 						<button type="button" onClick={this.updateClick}>Clck here ..!</button>
 						<p>
-							<span>You have liked {this.state.count} Many times</span>
+							<span>You have liked on like button for  {this.state.count} times</span>
 						</p>
 					</div>
 				);

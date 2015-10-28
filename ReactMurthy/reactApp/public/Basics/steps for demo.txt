@@ -1,0 +1,112 @@
+React return () returns only one component. So to return multiple components
+wrap in div.
+
+1. Demo1.jsx  : Simple component  
+	type html code in sublime text and cut/paste in React Component
+
+2. Demo2.jsx  : Reusable component with Props
+	Create reusable components by passing props
+
+3. Demo3.jsx  : Passing properties to components
+	Avoid Repeations of RadioOption by creating JSON array of all airlines
+	I am using map functin of ES 5 . For old browsers , use ES5 Shim
+
+	When you use map and do not specify key, react may complain :
+
+	"Each child in an array should have a unique "key" prop. Check the render method of RadioOptionGroup."
+
+4. Demo4.jsx : Toggling elements in display
+	  in RadioOptinoGroup add below code
+	  {this.props.other && <RadioOtherOption/>}  or
+
+	   {this.props.other ? <RadioOtherOption/>:<div/>}
+
+        and add other={false} in Demo component
+         (You can say other="true" or 1  or yes )
+
+5. Demo5.jsx: events  and state
+
+     When you select other then specify will appear
+
+     in RadioOtherOption, add code to setState
+
+
+6. demo6.jsx
+	 Problem in prev. code is other is changing state only once
+	 Solution here  
+	 Write code  in RadioOptionGroup by writing onChange as event bubbling here
+	 using Inter Component communication using ref and forceUpdate()
+
+	 {this.props.other ? <RadioOtherOption  ref="other"/>:<div/>}
+
+	 onChange:function(event){
+    if(this.props.other){
+      this.refs.other.forceUpdate();
+    }
+  },
+
+  I worked even on componentDidUpdate... logic see the code
+
+    if you do not write below code by modifying, u will be in never ending
+    loop as componentDidUpdate continuesly fired which will crash browser (Memory leak)
+
+     if(prevState.checked !==input.checked){
+     this.setState({
+        checked:input.checked
+      });
+   }
+
+   Demo7 : Prop validation:
+   facebook.github.io/react/docs/reusable-components.html  (visit this page)
+   click Reusable components section (Props validation)
+
+   in RadioOptions , add proptypes:
+   RadioOption=React.createClass({
+  	propTypes:{
+     value:React.PropTypes.string.isRequired,
+     children:React.PropTypes.node
+  	},
+  	...
+
+  	now remove value="option.value" code from RadioOptionGroup render function
+  		return (
+              <RadioOption  key={option.value}>
+                {option.label}
+              </RadioOption>
+            );
+  	run to get error as u must passs option.value
+
+
+Demo 8 : Convert jsx to javascript
+
+        JsxTransformer.js is reponsible for converting jsx file into javascript code automatically
+        Fine in development but not in production.
+
+        goto reaact web site and fine installers, 
+
+        Go to command line
+        >npm i -g react-tools
+        >jsx
+        >jsx -help
+
+        >mkdir  build
+        >jsx -x jsx public/basics build
+
+        Above command will take all jsx files from public/basics folder and convert to js
+        files(Pre compilation) and store in build folder.
+
+          open demo1.js and observe
+
+          
+        =========================================================
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>First React demo</title>
+     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="javascripts/react.js"></script>
+    <script src="javascripts/JSXTransformer.js"></script>     
+
+    </head>
+<body>
+   <h3 class="well  text-danger" style="background-color:orange">
+    <img src="images/react.jpg" width="100" height="50">&nbsp;&nbsp;by D.S.R.Murthy</h3>
+    <div id='app' class='well'></div>
+
+  <script>
+    var TextAreaCounter = React.createClass({
+    propTypes: {
+      text: React.PropTypes.string
+        },
+
+    getInitialState: function() {    
+    return {text: this.props.text};
+    },
+
+    _textChange: function(ev) {
+        this.setState({text: ev.target.value});
+
+        // below code also works
+        //  this.setProps({
+        //    value: ev.target.value
+        //  });
+      },
+
+    render: function() {
+        return React.DOM.div(null,
+          React.DOM.textarea({
+            value: this.state.text,
+            onChange: this._textChange
+            }),
+            React.DOM.h3(null, this.state.text.length)
+        );
+      }
+    });
+
+ React.render(
+    React.createElement(TextAreaCounter, {
+      text: "Enter text here"
+    }),
+    document.getElementById("app")
+    );
+  
+   </script>
+
+   <pre>
+    Properties are a mechanism for the outside world (users of the component) to configure  component. State is your internal data maintenance. So this.props is like public  properties in object-oriented parlance and this.state is a bag of your private properties. (its maintainability concern)
+   </pre>
+    
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>First React demo</title>
+     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="javascripts/react.js"></script>
+    <script src="javascripts/JSXTransformer.js"></script>     
+
+    </head>
+<body>
+   <h3 class="well  text-danger" style="background-color:orange">
+    <img src="images/react.jpg" width="100" height="50">&nbsp;&nbsp;by D.S.R.Murthy</h3>
+    <div id='app' class='well'></div>
+  
+  <script>
+  var Component = React.createClass({    
+    //called specs
+
+    // declare upfront, what your component expects and validation at runtime
+    propTypes: {
+      name: React.PropTypes.string.isRequired
+      },
+    render: function() {
+    //Think of this.props as read-only.
+      return React.DOM.span(null, "Hi ! " + this.props.name);
+      }
+    });
+  React.render(
+    React.createElement(Component,{name:"Murthy"}),
+      document.getElementById("app")  
+    );
+
+  // other way to create component (used for creating several instances)
+  var ComponentFactory = React.createFactory(Component);
+    React.render(
+
+      // if you remove name property below, error raised (see in console)
+      // and if you pass name:123, you get error as only string allowed
+      // To see list, in console type : Object.keys(React.PropTypes)
+      ComponentFactory({name:"Murthy"}),
+        document.getElementById("app")
+    );
+  </script>
+  
+   
+
+    
+</body>
+</html>

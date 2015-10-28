@@ -1,0 +1,20 @@
+﻿
+install node from nodejs.org
+
+
+>md webappwithexpress && cd webappwithexpress
+>npm init
+>npm install -g express 
+>npm install -g express-generator 
+>express myapp  
+>npm install                 (to install dependencies)
+
+observe folders
+
+go to myApp> node server.js
+
+server running at localhost:8080
+
+open browser and type localhost:8080/index.html
+
+enjoy

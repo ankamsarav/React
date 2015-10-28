@@ -1,0 +1,33 @@
+﻿step 1: setup html environment with react and jsxtransformer.jsx
+
+Step 2: The Tweet Box Using React.js
+
+Step 3: Tweet Button Should Initially Be Disabled
+
+Step 4: Implementing State and count chars (binding)
+
+In jQuery, when some event happens, you usually change the DOM
+
+In React, you don't directly modify the DOM. Instead, in an event handler, you modify something called the "state". 
+And this is done by calling this.setState
+
+see the code: when you type text, button is enabled else disabled
+
+In jQuery, you write event handlers which modify the DOM.
+In React.js, you write event handlers which modify the state. 
+And you write render() to reflect the current state.
+
+Step 5: add photo
+
+In React, event handlers modify the "state", 
+and whenever the state is modified, React automatically calls render() 
+again to update the UI.
+
+The state becomes an intermediary thing which sits in between the event handlers and render():
+
+Event handlers don't need to worry about which part of the DOM changes. 
+They just need to set the state.
+Similarly, when you write render(), 
+all you need to worry about is what the current state is.
+
+Step 6:The Final Feature - Highlighting Overflown Characters 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>First React demo</title>
+     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="javascripts/react.js"></script>
+    <script src="javascripts/JSXTransformer.js"></script>     
+
+    </head>
+<body>
+   <h3 class="well  text-danger" style="background-color:orange">
+    <img src="images/react.jpg" width="100" height="50">&nbsp;&nbsp;by D.S.R.Murthy</h3>
+    <div id='app' class='well'></div>
+
+  <script type="text/jsx">
+  var App = React.createClass({
+    getInitialState: function() {
+      return {userInput: ''}
+    },
+
+    handleChange: function(e) {
+      this.setState({userInput: e.target.value});
+    },
+
+    clearAndFocusInput: function() {
+      // Clear the input
+      this.setState({userInput: ''}, function() {
+        // This code executes after the component is re-rendered
+        React.findDOMNode(this.refs.theInput).focus();   // Boom! Focused!
+      });
+    },
+    render: function() {
+      return(
+        <div>
+          <div onClick={this.clearAndFocusInput}>Click to Focus to reset
+          </div>
+          <input  ref="theInput" value={this.state.userInput}
+            onChange={this.handleChange}/>
+        </div>
+      );
+    }
+  });
+ React.render(<App/>,    
+      document.getElementById("app")
+    );
+  </script>
+</body>
+</html>

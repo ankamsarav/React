@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>First React demo</title>
+     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="javascripts/react.js"></script>
+    <script src="javascripts/JSXTransformer.js"></script>     
+
+    </head>
+<body>
+   <h3 class="well  text-danger" style="background-color:orange">
+    <img src="images/react.jpg" width="100" height="50">&nbsp;&nbsp;by D.S.R.Murthy</h3>
+    <div id='app' class='well'></div>
+  <script type="text/jsx">
+  /*
+    without JSX:
+    -----------
+    React.render(
+      React.DOM.h1(
+      {id: "my-heading"},
+        React.DOM.span(null,
+          React.DOM.em(null, "Hell"),"o")," world!"
+      ),
+    document.getElementById('app')
+    );
+    */
+    //with JSX - So nice
+    React.render(
+      
+      <h1 id="my-heading">
+        <span><em>Hell</em>o</span> world
+      </h1>,
+      document.getElementById('app')
+      );
+  </script>
+    
+</body>
+</html>

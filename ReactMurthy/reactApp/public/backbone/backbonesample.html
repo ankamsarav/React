@@ -1,0 +1,34 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <link href="../stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="../javascripts/jquery-1.9.0.js"></script>
+    <script src="../javascripts/underscore.js"></script>
+    <script src="../javascripts/backbone.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+      var Profile = Backbone.Model.extend({
+        defaults : {
+          name    : null,
+          gender  : null,
+          picture : null
+        }
+      });
+
+      var profile = new Profile({
+        name    : "Srirama Murthy",
+        gender  : "male",
+        job: "Corporate Trainer"
+      });
+
+      console.log(
+        "name    : " + profile.get("name") + "\n" +
+        "gender  : " + profile.get("gender") + "\n" +
+        "job : " + profile.get("job")
+      );
+
+    </script>
+</body>
+</html>

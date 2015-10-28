@@ -1,0 +1,36 @@
+html, body{
+	padding:0px;
+	margin:0px;
+}
+
+h4{
+	color: #717176;
+	font-size: 15px;
+	float:left;
+}
+
+.header{
+	background:#282a2f;
+	float:left;
+	width:100%;
+	padding:10px;
+}
+
+.header ul{
+	float: right;
+}
+
+.header ul li{
+	float: left;
+	padding:5px 15px;
+	list-style: none;
+}
+
+.header ul li a{
+	color: #686b6b;
+}
+
+.header ul li.active a{
+	color: #963527;
+}
+

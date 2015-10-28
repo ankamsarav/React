@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>First React demo</title>
+     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <script src="javascripts/react.js"></script>
+    <script src="javascripts/JSXTransformer.js"></script>     
+
+    </head>
+<body>
+   <h3 class="well  text-danger" style="background-color:orange">
+    <img src="images/react.jpg" width="100" height="50">&nbsp;&nbsp;by D.S.R.Murthy</h3>
+    <div class="text-danger">Click on header to sort
+    </div>
+    <div id='app' class='well'></div>
+
+    <script>
+    var headers = [
+      "Book", "Author", "Language", "Published", "Sales"
+      ];
+    var data = [
+    ["The Lord of the Rings", "J.Tolkien",
+      "English", "1954","150 million"],
+      ["Harry Potter and the Philosopher's Stone", "J. Rowling","English", "1997", "107 million"],
+    ["And Then There Were None", "Christie",
+    "English", "1939", "100 million"],
+    ["Dream of the Red Chamber", "Cao",
+    "Chinese", "1754","100 million"],
+    ["The Hobbit", "Tolkien",
+    "English", "1937", "100 million"],
+    ["She: A History of Adventure", "Haggard",
+    "English", "1887", "100 million"]
+    ];
+
+    var Excel = React.createClass({
+      propTypes: {
+      headers: React.PropTypes.arrayOf(
+        React.PropTypes.string
+      ),
+        initialData: React.PropTypes.arrayOf(
+        React.PropTypes.arrayOf(
+          React.PropTypes.string)
+        ),
+      },
+      getInitialState: function() {
+        return {data: this.props.initialData};
+      },
+      displayName: 'Excel',
+
+      _sort:function(e){
+          var column = e.target.cellIndex;
+          data.sort(function(a, b) {
+            return a[column] > b[column];
+          });
+          this.setState({
+            data: data
+            });
+        },
+
+        
+    render: function() {
+      var self = this;
+      return (
+        React.DOM.table(null,
+        React.DOM.thead({onClick: this._sort},
+        React.DOM.tr(null,
+        this.props.headers.map(function(title, idx) {
+          return React.DOM.th({key: idx}, title);
+          })
+       )
+      ),
+      React.DOM.tbody({onDoubleClick: self._showEditor},
+          this.state.data.map(function (row, idx) {
+          return (
+            React.DOM.tr({key: idx},
+            row.map(function (cell, idx) {
+              return React.DOM.td({key: idx}, cell);
+             })
+          )
+        );
+      })
+    )
+    )
+  );
+  }
+  });
+
+    React.render(
+      React.createElement(Excel, {
+      headers: headers,
+      initialData: data
+    }),
+    document.getElementById("app")
+  );
+</script>
+
+</body>
+</html>

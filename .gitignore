@@ -5,3 +5,4 @@ build
 .sass-cache
 *.map
 examples/StoreKeeper/node_modules
+examples/ES6ReactPress/node_modules

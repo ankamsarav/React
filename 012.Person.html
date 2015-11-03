@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>React | Like BUTTON</title>
+	<script type="text/javascript" src="js/react.js"></script>
+	<script type="text/javascript" src="js/JSXTransformer.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
+</head>
+<body>
+
+	<div id="container">
+	</div>
+
+
+
+	<script type="text/jsx">
+
+	/*var data =[
+		{first:'Naveen',last:'Kumar'},
+		{first:'Manasa',last:'Sakala'},
+		{first:'Peter',last:'Parker'}
+	];*/
+	
+	var PersonApp = React.createClass({
+		getInitialState: function() {
+			return {
+				data:[],
+				first:'',
+				last:'' 
+			};
+		},
+		_firstNameChange: function(e){
+			this.setState({first: e.target.value});
+		},
+		_lastNameChange: function(e){
+			this.setState({last: e.target.value});
+		},
+		_handleSubmit: function(e){
+			e.preventDefault();
+			this.state.data.push({first: this.state.first, last: this.state.last});
+			this.setState({first:'', last:'' });
+		},
+		render: function() {
+			return (
+				<div>
+					<form onSubmit={this._handleSubmit}>
+						<input type='text' onChange={this._firstNameChange} value={this.state.first}/>
+						<input type='text' onChange={this._lastNameChange} value={this.state.last}/>
+						<button type='submit'>submit</button>
+					</form>
+					<PersonList data={this.state.data}/>
+				</div>
+			);
+		}
+	});
+	
+
+	var Person = React.createClass({
+		render: function() {
+			return (
+				<div>
+					<p>{this.props.last}, {this.props.first}</p>
+				</div>
+			);
+		}
+	
+	});
+	
+	var PersonList = React.createClass({
+		render: function() {
+			var template = this.props.data.map(function(person,index){
+				return <Person first={person.first} last={person.last}  />;
+			});
+			return (
+				<div>
+					{template}
+				</div>
+				
+			);
+		}
+	});
+	
+	
+	
+	
+	
+	React.render(<PersonApp />, document.getElementById('container'));
+
+	</script>
+
+</body>
+</html>
+

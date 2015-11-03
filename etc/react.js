@@ -60,13 +60,17 @@ DataBinding :
 	- React used Virtual DOM 
 		- Less leaky polyfill
 		- which makes JS and DOM as reactive
-		- 	London     Chicago
-			NewYork    Delhi
-					   Bangalore
 
 Events : 
 	- Events are build using their own EVENT syntethic system
 
+Drawbacks : 
+	- One way data flow,
+		- flow of components are like from parent to child relation 
+		- if parent state has changed, component will get refresh, including child components 
+		- in same way if the child state has changed, there is no way to let parent know child has changed
+	- State can be modified only on that component
+		- no way to change state from one component to other component (default) 
 
 
 
